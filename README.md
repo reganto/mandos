@@ -4,7 +4,7 @@
 <div align="center">
   <h1>Mandos</h1>
   <p align="center">
-    **Ridiculously Simple ToDo App With DRF 🐍 and ReactJS** ⚡ 
+    <b>Ridiculously Simple ToDo App With DRF 🐍 and ReactJS ⚡ </b>
     <br />
     <br />
     "He is the keeper of the Houses of the Dead, and the summoner of the spirits of the slain. He forgets nothing; and he knows all things that shall be, save only those that lie still in the freedom of Ilúvatar. He is the Doomsman of the Valar." 
