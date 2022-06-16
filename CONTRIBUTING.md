@@ -32,7 +32,7 @@ Doesn't tell me anything about why you're doing that
 > Add link to code of conduct in README.md because users don't always
 > look in the CONTRIBUTING.md
 
-Tells me the problem that you have found, and the pull request shows me
+Tells me the problem or 🐛 that you have found, and the pull request shows me
 the action you have taken to solve it.
 
 ### Is it of good quality
