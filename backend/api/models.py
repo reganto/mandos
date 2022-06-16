@@ -1,4 +1,4 @@
-# from django.urls import reverse
+from django.urls import reverse
 from django.db import models
 
 # Create your models here.
@@ -25,5 +25,5 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse("task_detail", args=[str(self.id)])
+    def get_absolute_url(self):
+        return reverse("task:detail", args=[str(self.id)])
