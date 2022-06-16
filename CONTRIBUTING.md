@@ -1,60 +1,36 @@
 # Contributing
 
-## Issues
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Issues are very valuable to this project.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-  - Ideas are a valuable source of contributions others can make
-  - Problems show where this project is lacking
-  - With a question you show where contributors can improve the user
-    experience
+## Acceptable Contributions
 
-Thank you for creating them.
+The purpose of this package is to use PtPython as default Django shell. If you would like to participate, the following should be considered in your pull requests:
 
-## Pull Requests
+- Add a new feature
 
-Pull requests are, a great way to get your ideas into this repository.
+- Fix 🐛 for existing functions
 
-When deciding if I merge in a pull request I look at the following
-things:
+- Improve documentation 
 
-### Does it state intent
+- Is tested (see the tests directory; we use `unittest` and `django.test`)
 
-You should be clear which problem you're trying to solve with your
-contribution.
+All code must follow the styles dictated by **black**.
 
-For example:
+Also, **please discuss any changes in the issues** before working on a PR to make sure that I'll accept it before you spend time working on it.
 
-> Add link to code of conduct in README.md
-
-Doesn't tell me anything about why you're doing that
-
-> Add link to code of conduct in README.md because users don't always
-> look in the CONTRIBUTING.md
-
-Tells me the problem or 🐛 that you have found, and the pull request shows me
-the action you have taken to solve it.
-
-### Is it of good quality
-
-  - There are no spelling mistakes
-  - It reads well
-  - For english language contributions: Has a good score on
-    [Grammarly](https://www.grammarly.com) or [Hemingway
-    App](https://www.hemingwayapp.com/)
-
-### Does it move this repository closer to my vision for the repository
-
-The aim of this repository is:
-
-  - To provide a README.md and assorted documents anyone can copy and
-    paste, into their project
-  - The content is usable by someone who hasn't written something like
-    this before
-  - Foster a culture of respect and gratitude in the open source
-    community.
-
-### Does it follow the contributor covenant
-
-This repository has a [code of conduct](CODE_OF_CONDUCT.md), I will
-remove things that do not respect it.
+# Set up instructions
+<!-- 
+1. Fork the repo
+2. Clone your fork
+3. Create a branch
+4. Run `pip install django-ptpython`
+5. Run `python -m unittest discover`. If everything works, then you're ready to make changes.
+6. Make your changes and try to make the tests pass. If you can't or need help then commit what you have and make a PR, we will solve it together!
+7. If you get things working, add your changed files with `git add` and run `git commit -m 'commit_message'`
+8. Push your changes to your fork with `git push`
+9. Create a pull request
+10. Iterate on the solution
+11. Get merged! :tada: -->
