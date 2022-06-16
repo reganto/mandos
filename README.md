@@ -1,3 +1,3 @@
 # Mandos
 
-**Ridiculously Simple ToDo App With DRF and ReactJS**
+**Ridiculously Simple ToDo App With DRF 🐍 and ReactJS** ⚡ 
