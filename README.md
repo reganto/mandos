@@ -14,6 +14,11 @@
   </p>
 </div>
 
+
+## Screenshot
+
+![Mandos Screenshot](https://user-images.githubusercontent.com/29402115/174294069-2aee738b-5165-4375-9587-cee166353f00.png)
+
 <!-- Why Userndo  -->
 <!-- 
 ## Why Usernado
