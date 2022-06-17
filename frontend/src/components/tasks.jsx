@@ -10,10 +10,10 @@ export default function Tasks() {
                 <div className="row">
                     <div className="form-control col">foo</div>
                     <div className="col-1">
-                        <a href="#"><img src="edit-color.webp" width={40} height={40} /></a>
+                        <a href="#"><img src="edit-color.webp" width={35} height={35} /></a>
                     </div>
                     <div className="col-1">
-                        <a href="#"><img src="delete-color.webp" width={40} height={40} /></a>
+                        <a href="#"><img src="delete-color.webp" width={35} height={35} /></a>
                     </div>
                 </div>
             </div>
