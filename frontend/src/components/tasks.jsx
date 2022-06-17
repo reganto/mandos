@@ -8,7 +8,7 @@ export default function Tasks() {
             <br />
             <div>
                 <div className="row">
-                    <div className="form-control col">foo</div>
+                    <div className="form-control col" style={{ textAlign: "left" }}>Buy some tea from the store</div>
                     <div className="col-1">
                         <a href="#"><img src="edit-color.webp" width={35} height={35} /></a>
                     </div>
