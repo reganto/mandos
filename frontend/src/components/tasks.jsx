@@ -5,21 +5,29 @@ const URL = "http://localhost:8000/api/v1/";
 
 export default function Tasks(props) {
     const [tasks, setTasks] = useState([]);
+    const [activeTask, setActiveTask] = useState({ id: 0, title: "", completed: false });
     useEffect(() => {
         async function getTasks() {
             const result = await axios.get(URL);
             setTasks(result.data);
         }
-        getTasks();  
+        getTasks();
         return () => {
             console.log("cleanup");
         }
-    }, [])
+    }, [activeTask])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        axios.post(URL, { title: activeTask });
+        setActiveTask("");
+    }
+
     return (
         <div style={{ width: "40%" }}>
             <div className="form-group row">
-                <input type="text" name="entry" id="entry" className="form-control col" placeholder="Add a new task..." />
-                <button type="submit" className="btn btn-primary col-2">Submit</button>
+                <input type="text" name="entry" id="entry" className="form-control col" placeholder="Add a new task..." onChange={e => setActiveTask(e.target.value)} />
+                <button type="submit" className="btn btn-primary col-2" onClick={e => handleSubmit(e)}>Submit</button>
             </div>
             <br />
             <div>
