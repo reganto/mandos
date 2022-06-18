@@ -5,22 +5,27 @@ const URL = "http://localhost:8000/api/v1/";
 
 export default function Tasks(props) {
     const [tasks, setTasks] = useState([]);
-    const [activeTask, setActiveTask] = useState({ id: 0, title: "", completed: false });
+    const [activeTask, setActiveTask] = useState("");
     useEffect(() => {
         async function getTasks() {
             const result = await axios.get(URL);
             setTasks(result.data);
         }
         getTasks();
-        return () => {
-            console.log("cleanup");
-        }
-    }, [activeTask])
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         axios.post(URL, { title: activeTask });
         setActiveTask("");
+    }
+
+    const handleDelete = async (task) => {
+        await axios.delete(`${URL}${task.id}`);
+
+        const cpTasks = [...tasks];
+        cpTasks.filter(t => t.id !== task.id);
+        setTasks(cpTasks);
     }
 
     return (
@@ -38,7 +43,7 @@ export default function Tasks(props) {
                             <a href="/"><img src="edit-color.webp" alt="edit" width={35} height={35} /></a>
                         </div>
                         <div className="col-1">
-                            <a href="/"><img src="delete-color.webp" alt="delete" width={35} height={35} /></a>
+                            <img src="delete-color.webp" alt="delete" width={35} height={35} onClick={() => handleDelete(task)} style={{ cursor: "pointer" }} />
                         </div>
                     </div>
                 ))}
