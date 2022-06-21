@@ -17,20 +17,6 @@ The purpose of this package is to use PtPython as default Django shell. If you w
 
 - Is tested (see the tests directory; we use `unittest` and `django.test`)
 
-All code must follow the styles dictated by **black**.
+All DRF's code must follow the styles dictated by **black**.
 
 Also, **please discuss any changes in the issues** before working on a PR to make sure that I'll accept it before you spend time working on it.
-
-# Set up instructions
-<!-- 
-1. Fork the repo
-2. Clone your fork
-3. Create a branch
-4. Run `pip install django-ptpython`
-5. Run `python -m unittest discover`. If everything works, then you're ready to make changes.
-6. Make your changes and try to make the tests pass. If you can't or need help then commit what you have and make a PR, we will solve it together!
-7. If you get things working, add your changed files with `git add` and run `git commit -m 'commit_message'`
-8. Push your changes to your fork with `git push`
-9. Create a pull request
-10. Iterate on the solution
-11. Get merged! :tada: -->
