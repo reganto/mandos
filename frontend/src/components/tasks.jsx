@@ -1,74 +1,111 @@
-import { useEffect, useState } from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 
-const URL = "http://localhost:8000/api/v1/";
+const URL = "http://localhost:8000/api/v1/"
 
-export default function Tasks(props) {
-    const [tasks, setTasks] = useState([]);
-    const [activeTask, setActiveTask] = useState("");
-    const [editing, setEditing] = useState(false);
-
-    useEffect(() => {
-        async function getTasks() {
-            const { data: result } = await axios.get(URL);
-            setTasks(result);
+export default class Tasks extends Component {
+    state = {
+        tasks: [],
+        activeTask: {},
+        editing: false,
+    }
+    async componentDidMount() {
+        const { data: tasks } = await axios.get(URL);
+        this.setState({ tasks })
+    }
+    handleAdd = async () => {
+        // Update task
+        if (this.state.editing) {
+            const { activeTask } = this.state;
+            const { data: task } = await axios.patch(`${URL}${activeTask.id}/`, { title: activeTask.title });
+            // Update UI
+            const tasks = [...this.state.tasks]
+            const index = tasks.findIndex(() => activeTask);
+            tasks[index] = { ...task }
+            this.setState({ tasks: tasks, activeTask: { title: "", completed: false, id: "" }, editing: false })
+            return
         }
-        getTasks();
-    }, [activeTask])
+        // Add task
+        const { data: task } = await axios.post(URL, this.state.activeTask);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (editing) {
-            const result = await axios.put(`${URL}${activeTask.id}/`, { title: activeTask });
-            console.log(result.data)
-            setEditing(false)
-            setActiveTask("")
-        }
-        await axios.post(URL, { title: activeTask });
-        setActiveTask("");
+        // Update UI
+        const tasks = [task, ...this.state.tasks];
+        this.setState({ tasks: tasks, activeTask: { title: "" } })
     }
+    handleDelete = async (task) => {
+        // delete task from server
+        await axios.delete(`${URL}${task.id}/`);
 
-    const handleDelete = async (task) => {
-        await axios.delete(`${URL}${task.id}`);
-
-        const cpTasks = [...tasks];
-        cpTasks.filter(t => t.id !== task.id);
-        setTasks(cpTasks);
+        // update UI
+        const tasks = this.state.tasks.filter(t => t.id !== task.id)
+        this.setState({ tasks })
     }
+    handleDone = async (task) => {
+        // change state of task to completed in server
+        const { data: update_task } = await axios.patch(`${URL}${task.id}/`, { completed: !task.completed });
+        // console.log(t)
 
-    const handleDone = async (task) => {
-        const { data: t } = await axios.patch(`${URL}${task.id}/`, { completed: !task.completed });
-        const cpTasks = [...tasks];
-        cpTasks[task] = t
-        setTasks(cpTasks)
+        // update ui
+        const tasks = [...this.state.tasks];
+        const index = tasks.indexOf(task)
+        tasks[index] = { ...update_task }
+        this.setState({ tasks })
     }
-
-    const handleEdit = async (task) => {
-        setEditing(true)
-        setActiveTask(task)
+    handleEdit = (task) => {
+        this.setState({ editing: true, activeTask: { title: task.title, completed: task.completed, id: task.id } });
     }
-
-    return (
-        <div style={{ width: "40%" }}>
-            <div className="form-group row">
-                <input type="text" name="entry" id="entry" className="form-control col" placeholder="Add a new task..." onChange={e => setActiveTask(e.target.value)} value={activeTask.title} />
-                <button type="submit" className="btn btn-primary col-2" onClick={e => handleSubmit(e)}>Submit</button>
-            </div>
-            <br />
-            <div>
-                {tasks.map(task => (
-                    <div key={task.id} className="row">
-                        <div className="form-control col" style={{ textAlign: "left", textDecoration: task.completed ? "line-through" : "" }} onClick={() => handleDone(task)}>{task.title}</div>
-                        <div className="col-1">
-                            <img src="edit-color.webp" alt="edit" width={35} height={35} onClick={() => handleEdit(task)} style={{ cursor: "pointer" }} />
+    handleChange = ({ currentTarget: input }) => {
+        let activeTask = { ...this.state.activeTask };
+        activeTask.title = input.value;
+        this.setState({ activeTask })
+    }
+    render() {
+        return (
+            <div style={{ width: "40%" }}>
+                <div className="form-group row">
+                    <input
+                        type="text"
+                        name="entry"
+                        id="entry"
+                        className="form-control col"
+                        placeholder="Add a new task..."
+                        onChange={this.handleChange}
+                        value={this.state.activeTask.title} />
+                    <button type="submit" className="btn btn-primary col-2" onClick={this.handleAdd}>Submit</button>
+                </div>
+                <br />
+                <div>
+                    {this.state.tasks.map((task, index) => (
+                        <div key={index} index={index} className="row">
+                            <div
+                                className="form-control col"
+                                style={{ textAlign: "left", textDecoration: task.completed ? "line-through" : "" }}
+                                onClick={() => this.handleDone(task)}
+                            >
+                                {task.title}
+                            </div>
+                            <div className="col-1">
+                                <img
+                                    src="edit-color.webp"
+                                    alt="edit"
+                                    width={35}
+                                    height={35}
+                                    onClick={() => this.handleEdit(task)}
+                                    style={{ cursor: "pointer" }} />
+                            </div>
+                            <div className="col-1">
+                                <img
+                                    src="delete-color.webp"
+                                    alt="delete"
+                                    width={35}
+                                    height={35}
+                                    onClick={() => this.handleDelete(task)}
+                                    style={{ cursor: "pointer" }} />
+                            </div>
                         </div>
-                        <div className="col-1">
-                            <img src="delete-color.webp" alt="delete" width={35} height={35} onClick={() => handleDelete(task)} style={{ cursor: "pointer" }} />
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
