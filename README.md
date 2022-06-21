@@ -14,85 +14,46 @@
   </p>
 </div>
 
-
-## Screenshot
-
-![Mandos Gif](https://github.com/assets/29402115/fa4b9822-1f6a-4d2d-a251-cee7844ca647)
-
-<!-- Why Userndo  -->
-<!-- 
-## Why Usernado
-
-I'm using 🌪️ every day. I really like it 😍 . Besides of all advantages of Tornado, it's not a full-stack framework, and I had to put all the pieces of the puzzle together every day 😩! So this is my attempt to follow DRY(Don't Repeat Yourself) principle. This is how the Usernado was born. -->
-
-<!-- Features -->
-<!-- 
-## Features
-
-- REST support :zap:
-
-- Websocket easier than ever :zap:
-
-- ORM agnostic authentication :zap:
-
-- Humanize datetime in templates :zap:
-
-- Better exception printer thanks to [tornado-debugger](https://github.com/bhch/tornado-debugger) :zap: -->
-
 <!-- Getting Started -->
-<!-- 
+
 ## Installation
 
-Install either with pip or poetry.
+### Django Rest Framework
 
 ```bash
-pip install usernado
-```
-```bash
-poetry add usernado
+cd backend
 ```
 
-Or optionally you can install from github using 
-```bash 
-pip install git+https://github.com/reganto/usernado
-``` -->
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+./manage.py runserver
+```
+
+### ReactJS
+
+```bash
+cd frontend
+```
+
+```bash
+npm install 
+```
+
+```bash
+npm start
+```
 
 <!-- USAGE EXAMPLES -->
 
-<!-- ## Usage
+## Usage
 
-### Example
+<p align="center">
+  <img src="https://github.com/assets/29402115/fa4b9822-1f6a-4d2d-a251-cee7844ca647" alt="mandos gif" />
+</p>
 
-```python
-from usernado import Usernado
-
-
-class HelloHandler(Usernado.Web):
-    def get(self):
-        self.write("Hello, World!")
-```
-
-For more examples please Check out [examples](https://github.com/reganto/Usernado/tree/master/example).
- -->
-<!-- ROADMAP -->
-<!-- 
-## Roadmap
-
-- [x] Send and broadcast for websockets
-- [x] Abstracted authentication methods
-- [x] Authenticaion methods should return True/False
-- [x] Add diff_for_human (humanize) decorator
-- [x] Add api_route for API handlers
-- [x] Add username & password to test login 
-- [x] Add pluralize (str_plural) uimodule
-- [ ] Add third party authentication abstract methods
-- [ ] Add pagination
- -->
-<!-- CONTACT -->
-
-<!-- ## Contact
+## Contact
 
 Email: tell.reganto[at]gmail[dot]com
-
-<p align="right"><a href="#top"><img src="https://raw.githubusercontent.com/DjangoEx/python-engineer-roadmap/main/statics/top.png" width=50 height=50 /></a></p>
- -->
