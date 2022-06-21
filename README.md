@@ -17,7 +17,7 @@
 
 ## Screenshot
 
-![Mandos Screenshot](https://user-images.githubusercontent.com/29402115/174294069-2aee738b-5165-4375-9587-cee166353f00.png)
+![Mandos Gif](https://github.com/assets/29402115/fa4b9822-1f6a-4d2d-a251-cee7844ca647)
 
 <!-- Why Userndo  -->
 <!-- 
